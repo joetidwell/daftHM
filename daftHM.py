@@ -179,6 +179,10 @@ class Node(object):
         ``facecolor``, and a few other ``plot_params`` settings.
         This setting conflicts with ``observed``.
 
+    :param continuous: (optional)
+        Should this be a discrete ore a continuous variable?
+        If `True`, node shape is a circle, otherwise a rectangle.
+
     :param offset: (optional)
         The ``(dx, dy)`` offset of the label (in points) from the default
         centered position.
@@ -189,13 +193,14 @@ class Node(object):
 
     """
     def __init__(self, name, content, x, y, scale=1, aspect=None,
-                 observed=False, fixed=False,
+                 observed=False, fixed=False, continuous=True,
                  offset=[0, 0], plot_params={}, label_params=None):
         # Node style.
         assert not (observed and fixed), \
             "A node cannot be both 'observed' and 'fixed'."
         self.observed = observed
         self.fixed = fixed
+        self.continuous = continuous
 
         # Metadata.
         self.name = name
@@ -204,8 +209,6 @@ class Node(object):
         # Coordinates and dimensions.
         self.x, self.y = x, y
         self.scale = scale
-        if self.fixed:
-            self.scale /= 6.0
         self.aspect = aspect
 
         # Display parameters.
@@ -253,16 +256,6 @@ class Node(object):
 
         # Deal with ``fixed`` nodes.
         scale = self.scale
-        if self.fixed:
-            # MAGIC: These magic numbers should depend on the grid/node units.
-            self.offset[1] += 6
-
-            l["va"] = "baseline"
-            l.pop("verticalalignment", None)
-            l.pop("ma", None)
-
-            if p["fc"] == "none":
-                p["fc"] = "k"
 
         diameter = ctx.node_unit * scale
         if self.aspect is not None:
@@ -271,35 +264,32 @@ class Node(object):
             aspect = ctx.aspect
 
         # Set up an observed node. Note the fc INSANITY.
-        if self.observed:
-            # Update the plotting parameters depending on the style of
-            # observed node.
-            h = float(diameter)
-            w = aspect * float(diameter)
-            if ctx.observed_style == "shaded":
-                p["fc"] = "0.7"
-            elif ctx.observed_style == "outer":
-                h = diameter + 0.1 * diameter
-                w = aspect * diameter + 0.1 * diameter
-            elif ctx.observed_style == "inner":
-                h = diameter - 0.1 * diameter
-                w = aspect * diameter - 0.1 * diameter
-                p["fc"] = fc
 
-            # Draw the background ellipse.
-            bg = Ellipse(xy=ctx.convert(self.x, self.y),
-                         width=w, height=h, **p)
+        if self.observed is True:
+            # shade node
+            p["fc"] = ".7"
+            
+        if self.fixed is True:
+            if self.continuous is True:
+                # add a circle
+                bg = Ellipse(xy=ctx.convert(self.x, self.y),
+                              width=diameter * aspect - .15 * diameter, height=diameter - .15 * diameter, **p)
+            else: 
+                # add a rectangle
+                bg = Rectangle(xy=(ctx.convert(self.x, self.y)-.5) + [.5 * .15 * diameter, .5 * .15 * diameter], 
+                                width=diameter * aspect - .15 * diameter * aspect, height=diameter - .15 * diameter, **p)
             ax.add_artist(bg)
-
-            # Reset the face color.
-            p["fc"] = fc
-
-        # Draw the foreground ellipse.
-        if ctx.observed_style == "inner" and not self.fixed:
-            p["fc"] = "none"
-        el = Ellipse(xy=ctx.convert(self.x, self.y),
-                     width=diameter * aspect, height=diameter, **p)
-        ax.add_artist(el)
+            
+        if self.continuous is True:
+            # add a circle
+            shp = Ellipse(xy=ctx.convert(self.x, self.y),
+                          width=diameter * aspect, height=diameter, **p)
+        else: 
+            # add a rectangle
+            shp = Rectangle(xy=ctx.convert(self.x, self.y)-.5, 
+                            width=diameter * aspect, height=diameter, **p)
+    
+        ax.add_artist(shp)
 
         # Reset the face color.
         p["fc"] = fc
@@ -310,7 +300,7 @@ class Node(object):
                     xytext=self.offset, textcoords="offset points",
                     **l)
 
-        return el
+        return shp
 
 
 class Edge(object):
