@@ -39,11 +39,10 @@ The Code
 
 .. code-block:: python
 
+import daftHM
 from matplotlib import rc
 rc("font", family="serif", size=14)
 rc("text", usetex=True)
-
-import daftHM
 
 pgm = daftHM.PGM(shape=[9, 8], origin=[0, 0], observed_style='shaded', node_unit=1.3)
 
