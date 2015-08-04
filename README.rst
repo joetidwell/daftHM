@@ -8,4 +8,4 @@ DaftHM extends the Daft package in the following ways:
 
 - Nodes
   - Syntax is now similar to other hierarchical modeling methods, and added the option for "discrete", i.e. square-shaped, nodes
-    - Primary `Node` class flags are `observed`, `fixed`, and `continuous` 
+    - Primary ``Node`` class flags are ``observed``, ``fixed``, and ``continuous`` 
