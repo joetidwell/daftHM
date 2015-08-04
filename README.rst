@@ -43,7 +43,9 @@ The Code
   rc("font", family="serif", size=14)
   rc("text", usetex=True)
 
-  pgm = PGM(shape=[9, 8], origin=[0, 0], observed_style='shaded', node_unit=1.3)
+  import daftHM
+
+  pgm = daftHM.PGM(shape=[9, 8], origin=[0, 0], observed_style='shaded', node_unit=1.3)
 
   # Nodes
   pgm.add_node(Node(name="delta", content=r"$\delta$", x=3.5, y=7))
@@ -83,20 +85,15 @@ The Code
 
   #Equations
   pgm.add_equation(Equation(r"$\delta \sim N(0,1)$",5.5, 7))
-
   pgm.add_equation(Equation(r"$\mu_{\phi} \sim |N(0,1)|$",5.5, 6.4))
   pgm.add_equation(Equation(r"$\sigma_{\phi} \sim U(0,10)$",5.5, 6.1))
   pgm.add_equation(Equation(r"$\mu_{\alpha} = \delta\sigma_{\alpha}$",5.5, 5.8))
   pgm.add_equation(Equation(r"$\sigma_{\alpha} \sim U(0,10)$",5.5, 5.5))
-
   pgm.add_equation(Equation(r"$\alpha_{i} \sim N(\mu_{\alpha},\sigma^2_{\alpha})$",5.5, 4.9))
-
   pgm.add_equation(Equation(r"$\phi_{SN,i} \sim N(\mu_{\phi},\sigma^2_{\phi})$",5.5, 4.1))
   pgm.add_equation(Equation(r"$\phi_{SB,i} = \phi_{SN,i}+\alpha_i$",5.5, 3.8))
-
   pgm.add_equation(Equation(r"$\theta_{SN,i} = \Phi (\phi_{SN,i})$",5.5, 3.1))
   pgm.add_equation(Equation(r"$\theta_{SB,i} = \Phi (\phi_{SB,i})$",5.5, 2.8))
-
   pgm.add_equation(Equation(r"$K_{SN,i} = \mbox{Binomial}(\theta_{SN,i},N_{SN,i})$",5.5, 2.1))
   pgm.add_equation(Equation(r"$K_{SB,i} = \mbox{Binomial}(\theta_{SB,i},N_{SB,i})$",5.5, 1.8))
 
