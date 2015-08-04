@@ -25,7 +25,7 @@ version = vre.findall(m)[0]
 
 setup(
     name="daftHM",
-    version=version,
+    version="0.0.1",
     description="PGM rendering at its finest.",
     long_description=open("README.rst").read(),
     author="Joe Tidwell",
