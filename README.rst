@@ -38,6 +38,7 @@ The Code
 --------
 
 .. code-block:: python
+
   from matplotlib import rc
   rc("font", family="serif", size=14)
   rc("text", usetex=True)
