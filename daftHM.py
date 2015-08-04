@@ -482,7 +482,8 @@ class Plate(object):
         p["fc"] = _pop_multiple(p, "none", "fc", "facecolor")
         p["lw"] = _pop_multiple(p, ctx.line_width, "lw", "linewidth")
 
-        rect = Rectangle(r[:2], *r[2:], **p)
+        rect = FancyBboxPatch(r[:2], *r[2:], **p)
+                
         ax.add_artist(rect)
 
         if self.label is not None:
