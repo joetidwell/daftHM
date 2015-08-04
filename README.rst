@@ -7,7 +7,12 @@ them in any formats that matplotlib supports.
 DaftHM extends the Daft package in the following ways:
 
 - Nodes
+  - ``Node`` class code simplified 
   - Syntax is now similar to other hierarchical modeling methods, and added the option for "discrete", i.e. square-shaped, nodes
     - ``observed``: If ``False`` (default), node shape is shaded white, otherwise grey
     - ``fixed``: If ``False`` (default), node is single-bordered, other wise double-bordered,indicating that the value of the node is completely determined by it's ancestor nodes
-    - ``continuous`: If ``True`` (default), node is a circle, otherwise node is a square, indicating a discrete value
+    - ``continuous``: If ``True`` (default), node is a circle, otherwise node is a square, indicating a discrete value
+- Plates
+  - ``Plate`` class modified to replace ``matplotlib.patches.Rectangle`` with ``matplotlib.patches.FancyBboxPatch`` so plates have rounded corners by default
+- Equations
+  - Added ``Equation`` class and methods to enable inclusion of model equations in the plot
