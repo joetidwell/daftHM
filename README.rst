@@ -1,8 +1,15 @@
+Overview
+========
+
 **DaftHM** is a Python package, based on the `Daft <http://daft-pgm.org>`_ package authored by Dan Foreman-Mackey and David W. Hogg, that uses `matplotlib <http://matplotlib.org/>`_
 to render pixel-perfect *probabilistic graphical models* for publication
 in a journal or on the internet. With a short Python script and an intuitive
 model-building syntax you can design directed and undirected graphs and save
 them in any formats that matplotlib supports.
+
+
+New Stuff
+=========
 
 DaftHM extends the Daft package in the following ways:
 
@@ -16,3 +23,8 @@ DaftHM extends the Daft package in the following ways:
   - ``Plate`` class modified to replace ``matplotlib.patches.Rectangle`` with ``matplotlib.patches.FancyBboxPatch`` so plates have rounded corners by default
 - Equations
   - Added ``Equation`` class and methods to enable inclusion of model equations in the plot
+
+Example
+=======
+
+This graphical model reproduces the example included in `Tom Lodewyckx's <https://sites.google.com/site/tomlodewyckx/downloads/TutorialGMLTX.zip?attredirects=0>`_ tutorial on making graphical models in LaTex, which itself is based on work by `Lee & Wagenmakers, 2009 <http://www.socsci.uci.edu/∼ mdlee/bgm.html>`_
