@@ -27,7 +27,7 @@ DaftHM extends the Daft package in the following ways:
 Example
 =======
 
-This graphical model reproduces the example included in `Tom Lodewyckx's <https://sites.google.com/site/tomlodewyckx/downloads/TutorialGMLTX.zip?attredirects=0>`_ tutorial on making graphical models in LaTex, which itself is based on work by `Lee & Wagenmakers, 2009 <http://www.socsci.uci.edu/∼ mdlee/bgm.html>`_. 
+This graphical model reproduces the example included in `Tom Lodewyckx's <https://sites.google.com/site/tomlodewyckx/downloads/TutorialGMLTX.zip?attredirects=0>`_ tutorial on making graphical models in LaTex, which itself is based on a model developed by `Lee & Wagenmakers, 2009 <http://www.socsci.uci.edu/∼ mdlee/bgm.html>`_. 
 
 The Plot
 --------
