@@ -1,10 +1,7 @@
-.. image:: https://raw.github.com/davidwhogg/daft/master/images/logo.png
-
-**Daft** is a Python package that uses `matplotlib <http://matplotlib.org/>`_
+**DaftHM** is a Python package, based on the `Daft <http://daft-pgm.org>` package authored by Dan Foreman-Mackey and David W. Hogg, that uses `matplotlib <http://matplotlib.org/>`_
 to render pixel-perfect *probabilistic graphical models* for publication
 in a journal or on the internet. With a short Python script and an intuitive
 model-building syntax you can design directed and undirected graphs and save
 them in any formats that matplotlib supports.
 
-Get more information at: `daft-pgm.org <http://daft-pgm.org>`_
-**************************************************************
+.. image:: https://raw.github.com/davidwhogg/daft/master/images/wagenmakers.pdf
