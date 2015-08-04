@@ -4,4 +4,4 @@ in a journal or on the internet. With a short Python script and an intuitive
 model-building syntax you can design directed and undirected graphs and save
 them in any formats that matplotlib supports.
 
-.. image:: https://raw.github.com/davidwhogg/daft/master/images/wagenmakers.pdf
+.. image:: https://raw.github.com/joetidwell/daftHM/master/images/wagenmakers.pdf
