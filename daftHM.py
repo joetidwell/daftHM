@@ -506,7 +506,32 @@ class Plate(object):
 
         return rect
 
+class Equation(object):
+  
+    def __init__(self, content, x, y):
 
+        # Metadata.
+        self.content = content
+
+        # Coordinates and dimensions.
+        self.x, self.y = x, y
+
+
+    def render(self, ctx):
+        """
+        Render the equation.
+
+        :param ctx:
+            The :class:`_rendering_context` object.
+
+        """
+        self.x, self.y = ctx.convert(self.x, self.y)
+        ax = ctx.ax()
+        eq = ax.text(self.x, self.y, self.content)
+
+        return eq
+
+        
 class _rendering_context(object):
     """
     :param shape:
