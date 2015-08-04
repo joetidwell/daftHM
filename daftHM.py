@@ -276,7 +276,7 @@ class Node(object):
                               width=diameter * aspect - .15 * diameter, height=diameter - .15 * diameter, **p)
             else: 
                 # add a rectangle
-                bg = Rectangle(xy=(ctx.convert(self.x, self.y)-.5) + [.5 * .15 * diameter, .5 * .15 * diameter], 
+                bg = Rectangle(xy=(ctx.convert(self.x, self.y)-.5*ctx.node_unit) + [.5 * .15 * diameter, .5 * .15 * diameter], 
                                 width=diameter * aspect - .15 * diameter * aspect, height=diameter - .15 * diameter, **p)
             ax.add_artist(bg)
             
@@ -286,7 +286,7 @@ class Node(object):
                           width=diameter * aspect, height=diameter, **p)
         else: 
             # add a rectangle
-            shp = Rectangle(xy=ctx.convert(self.x, self.y)-.5, 
+            shp = Rectangle(xy=ctx.convert(self.x, self.y)-.5*ctx.node_unit, 
                             width=diameter * aspect, height=diameter, **p)
     
         ax.add_artist(shp)
