@@ -8,6 +8,7 @@ __version__ = "0.0.4-dev"
 import matplotlib.pyplot as plt
 from matplotlib.patches import Ellipse
 from matplotlib.patches import FancyArrow
+from matplotlib.patches import FancyBboxPatch
 from matplotlib.patches import Rectangle as Rectangle
 
 import numpy as np
@@ -58,6 +59,7 @@ class PGM(object):
         self._nodes = {}
         self._edges = []
         self._plates = []
+        self._equations = []
 
         self._ctx = _rendering_context(shape=shape, origin=origin,
                                        grid_unit=grid_unit,
@@ -103,6 +105,14 @@ class PGM(object):
 
         return e
 
+    def add_equation(self, equation):
+        """
+        Add a :class:`Equation` object to the model.
+
+        """
+        self._equations.append(equation)
+        return None
+
     def add_plate(self, plate):
         """
         Add a :class:`Plate` object to the model.
@@ -110,7 +120,8 @@ class PGM(object):
         """
         self._plates.append(plate)
         return None
-
+    
+    
     def render(self):
         """
         Render the :class:`Plate`, :class:`Edge` and :class:`Node` objects in
@@ -127,11 +138,14 @@ class PGM(object):
         for edge in self._edges:
             edge.render(self._ctx)
 
+        for equation in self._equations:
+            equation.render(self._ctx)
+
+
         for name in self._nodes:
             self._nodes[name].render(self._ctx)
-
+            
         return self.ax
-
 
 class Node(object):
     """
