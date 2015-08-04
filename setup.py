@@ -19,19 +19,19 @@ if sys.argv[-1] == "publish":
 
 vre = re.compile("__version__ = \"(.*?)\"")
 m = open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                      "daft.py")).read()
+                      "daftHM.py")).read()
 version = vre.findall(m)[0]
 
 
 setup(
-    name="daft",
+    name="daftHM",
     version=version,
     description="PGM rendering at its finest.",
     long_description=open("README.rst").read(),
-    author="David W. Hogg & Daniel Foreman-Mackey",
-    author_email="danfm@nyu.edu",
-    url="http://daft-pgm.org",
-    py_modules=["daft"],
+    author="Joe Tidwell",
+    author_email="joetidwell@umd.edu",
+    url="https://github.com/joetidwell/daftHM",
+    py_modules=["daftHM"],
     package_data={"": ["LICENSE.rst"]},
     include_package_data=True,
     install_requires=[
